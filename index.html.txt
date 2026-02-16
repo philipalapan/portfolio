@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PA Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+
+<body>
+<div id="app">
+
+
+<header>
+  <h1>PA Portfolio</h1>
+  <p>Junior Web Developer</p>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+
+<section id="home" class="hero">
+  <h2>Hello, I'm PA 👋</h2>
+  <p>Building clean, responsive, and functional web applications.</p>
+  <button @click="scrollTo('projects')">View My Projects</button>
+  <a href="#" class="btn">Download Resume</a>
+</section>
+
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="project-grid">
+    <div class="project-card" v-for="p in projects" :key="p.title">
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.desc }}</p>
+      <ul>
+        <li v-for="f in p.features" :key="f">{{ f }}</li>
+      </ul>
+      <p class="tech">{{ p.tech }}</p>
+      <div class="project-links">
+        <a :href="p.demo" target="_blank">Live Demo</a>
+        <a :href="p.code" target="_blank">Source Code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span v-for="s in skills" :key="s">{{ s }}</span>
+  </div>
+</section>
+
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a junior web developer building projects using HTML, CSS, JavaScript, and Vue 3.
+    This portfolio demonstrates hands-on projects, coding skills, and responsive design.
+  </p>
+</section>
+
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form @submit.prevent="submitContact">
+    <input v-model="contact.name" placeholder="Your Name" required>
+    <input v-model="contact.email" type="email" placeholder="Your Email" required>
+    <textarea v-model="contact.message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+<footer>
+  <p>Built with Vue 3 • © 2026 PA</p>
+</footer>
+
+
+<button id="back-to-top" @click="scrollToTop">Back to Top</button>
+
+
+</div>
+
+
+<!-- JS -->
+<script src="app.js"></script>
+</body>
+</html>
